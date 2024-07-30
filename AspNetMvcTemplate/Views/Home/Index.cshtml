@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+
+
+<div class="container mt-5">
+    <section>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Hello one</h2>
+                <p>Discover a wide range of exciting projects and collaborate with other developers.</p>
+                <a asp-controller="Fake" asp-action="Index" class="btn btn-success">Explore Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="start-activity">
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h2>Share your idea</h2>
+                <p>Create your own idea and build a community around it.</p>
+                <a asp-controller="Fake" asp-action="Create" class="btn btn-warning">Do something</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="learn-more">
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h2>Learn More</h2>
+                <p>Feel free to learn more
+                    <a asp-controller="Home" asp-action="About" class="">About me</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
