@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using AspNetMvcTemplate.Data.Models;
+using AspNetCoreTemplate.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace AspNetMvcTemplate.Areas.Identity.Pages.Account
+namespace AspNetCoreTemplate.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailModel : PageModel
     {

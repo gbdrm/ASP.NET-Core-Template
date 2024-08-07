@@ -1,10 +1,10 @@
-using AspNetMvcTemplate.Data;
-using AspNetMvcTemplate.ViewModels;
+using AspNetCoreTemplate.Data;
+using AspNetCoreTemplate.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-namespace AspNetMvcTemplate.Controllers
+namespace AspNetCoreTemplate.Controllers
 {
     public class HomeController : Controller
     {

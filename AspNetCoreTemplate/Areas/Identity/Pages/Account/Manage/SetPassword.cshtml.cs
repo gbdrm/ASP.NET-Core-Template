@@ -5,12 +5,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using AspNetMvcTemplate.Data.Models;
+using AspNetCoreTemplate.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AspNetMvcTemplate.Areas.Identity.Pages.Account.Manage
+namespace AspNetCoreTemplate.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {

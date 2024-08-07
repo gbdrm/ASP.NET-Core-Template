@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspNetMvcTemplate.Data.Models
+namespace AspNetCoreTemplate.Data.Models
 {
     public class AppMetadata
     {

@@ -1,38 +1,36 @@
-using AspNetMvcTemplate.Data;
-using AspNetMvcTemplate.Data.Models;
-using AspNetMvcTemplate.Data.Seed;
-using AspNetMvcTemplate.Temp;
+using AspNetCoreTemplate.Data;
+using AspNetCoreTemplate.Data.Models;
+using AspNetCoreTemplate.Data.Seed;
+using AspNetCoreTemplate.Temp;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-var hostingProvider = Environment.GetEnvironmentVariable("HOSTING_PROVIDER");
-
-bool isRender = hostingProvider?.ToLower() == "render.com";
-#if DEBUG
-isRender = true;
-#endif
+bool noHttpsRequired = true; // Hardcoded value to highlight, a lot of modern hosting do https for you
 
 var connectionString = builder.Configuration.GetConnectionString("PostgresConnection");
-
-// fallback to DefaultConnection
 if (connectionString == null)
-    connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    new InvalidOperationException("Connection string was not found.");
 
-// change to something simpler and it should be the same DB for local and prod
-var fake = true;
-if (fake)
-{
-    builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
-}
-else
-{
-    builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
-}
+builder.Services.AddDbContext<DataProtectionKeyContext>(options =>
+            options.UseNpgsql(connectionString));
+builder.Services.AddDataProtection()
+    .PersistKeysToDbContext<DataProtectionKeyContext>()
+    .SetApplicationName("AspNetCoreTemplate");
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+        options.LoginPath = "/Identity/Account/Login";
+        options.LogoutPath = "/Identity/Account/Logout";
+        options.SlidingExpiration = true;
+    });
 
 builder.Services.AddIdentity<AppUser, IdentityRole<long>>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole<long>>()
@@ -49,7 +47,6 @@ builder.Services.AddTransient<IEmailSender, InMemoryEmailSender>(); // Replace w
 var app = builder.Build();
 app.Logger.LogInformation("Application starting up");
 
-if(!fake)
 using (var scope = app.Services.CreateScope())
 {
     app.Logger.LogInformation("Seeding initial data.");
@@ -68,7 +65,7 @@ else
     app.UseExceptionHandler("/Home/Error");
 }
 
-if (isRender)
+if (noHttpsRequired)
 {
     app.Logger.LogInformation("Deployed on render.com, no need in https");
 }
@@ -87,6 +84,9 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

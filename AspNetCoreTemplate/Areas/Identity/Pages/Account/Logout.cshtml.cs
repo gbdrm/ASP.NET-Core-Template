@@ -5,13 +5,13 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using AspNetMvcTemplate.Data.Models;
+using AspNetCoreTemplate.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace AspNetMvcTemplate.Areas.Identity.Pages.Account
+namespace AspNetCoreTemplate.Areas.Identity.Pages.Account
 {
     public class LogoutModel : PageModel
     {

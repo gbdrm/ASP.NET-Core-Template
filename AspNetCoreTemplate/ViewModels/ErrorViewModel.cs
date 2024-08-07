@@ -1,4 +1,4 @@
-namespace AspNetMvcTemplate.ViewModels
+namespace AspNetCoreTemplate.ViewModels
 {
     public class ErrorViewModel
     {

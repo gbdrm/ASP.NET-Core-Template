@@ -1,4 +1,4 @@
-using AspNetMvcTemplate.Data.Models;
+using AspNetCoreTemplate.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +9,7 @@ using System.Text.Encodings.Web;
 using System.Text;
 using Microsoft.AspNetCore.Authentication;
 
-namespace AspNetMvcTemplate.Areas.Identity.Pages.Account
+namespace AspNetCoreTemplate.Areas.Identity.Pages.Account
 {
     public class SignUpModel : PageModel
     {

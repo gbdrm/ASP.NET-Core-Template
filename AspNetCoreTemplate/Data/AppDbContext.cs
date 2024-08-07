@@ -1,9 +1,9 @@
-﻿using AspNetMvcTemplate.Data.Models;
+﻿using AspNetCoreTemplate.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspNetMvcTemplate.Data
+namespace AspNetCoreTemplate.Data
 {
     public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<long>, long>
     {

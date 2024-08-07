@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace AspNetMvcTemplate.Data.Models
+namespace AspNetCoreTemplate.Data.Models
 {
     public class AppUser : IdentityUser<long>
     {

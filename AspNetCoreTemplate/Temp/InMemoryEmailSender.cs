@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 
-namespace AspNetMvcTemplate.Temp
+namespace AspNetCoreTemplate.Temp
 {
     public class InMemoryEmailSender : IEmailSender
     {

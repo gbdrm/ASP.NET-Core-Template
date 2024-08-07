@@ -1,7 +1,7 @@
-﻿using AspNetMvcTemplate.Data.Models;
+﻿using AspNetCoreTemplate.Data.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace AspNetMvcTemplate.Data.Seed
+namespace AspNetCoreTemplate.Data.Seed
 {
     public class DefaultDataSeeder
     {
